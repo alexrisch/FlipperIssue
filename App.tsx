@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -61,6 +61,27 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/facebook/react/contents/README.md', {
+      headers: {
+        Accept: 'application/vnd.github.VERSION.raw',
+      },
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.text(); // Getting the raw text of the README file
+        } else {
+          throw new Error('Network response was not ok.');
+        }
+      })
+      .then(text => {
+        console.log('README content:', text);
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
