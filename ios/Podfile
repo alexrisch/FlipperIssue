@@ -39,7 +39,9 @@ target 'FlipperIssue' do
 
   # Flags change depending on the env values.
   flags = get_default_flags()
-
+  pod 'XMTPRust', '0.3.7-beta0'
+  # pod 'LibXMTP', '= 0.4.4-beta2'
+  # pod 'OpenSSL-Universal'
   use_react_native!(
     :path => config[:reactNativePath],
     # Hermes is now enabled by default. Disable by setting this flag to false.

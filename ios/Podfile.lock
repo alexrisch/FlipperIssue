@@ -2,8 +2,8 @@ PODS:
   - BigInt (5.0.0)
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
-  - Connect-Swift (0.3.0):
-    - SwiftProtobuf (~> 1.20.3)
+  - Connect-Swift (0.12.0):
+    - SwiftProtobuf (~> 1.25.2)
   - DoubleConversion (1.1.6)
   - EXApplication (5.3.1):
     - ExpoModulesCore
@@ -97,6 +97,7 @@ PODS:
     - hermes-engine/Pre-built (= 0.72.9)
   - hermes-engine/Pre-built (0.72.9)
   - libevent (2.1.12)
+  - LibXMTP (0.4.4-beta2)
   - Logging (1.0.0)
   - MessagePacker (0.4.7)
   - OpenSSL-Universal (1.1.1100)
@@ -400,8 +401,6 @@ PODS:
   - React-jsinspector (0.72.9)
   - React-logger (0.72.9):
     - glog
-  - react-native-flipper (0.182.0):
-    - React-Core
   - React-NativeModulesApple (0.72.9):
     - hermes-engine
     - React-callinvoker
@@ -514,22 +513,22 @@ PODS:
     - React-perflogger (= 0.72.9)
   - secp256k1.swift (0.1.4)
   - SocketRocket (0.6.1)
-  - SwiftProtobuf (1.20.3)
+  - SwiftProtobuf (1.25.2)
   - web3.swift (1.6.0):
     - BigInt (~> 5.0.0)
     - GenericJSON (~> 2.0)
     - Logging (~> 1.0.0)
     - secp256k1.swift (~> 0.1)
-  - XMTP (0.7.7-alpha0):
-    - Connect-Swift (= 0.3.0)
+  - XMTP (0.10.3):
+    - Connect-Swift (= 0.12.0)
     - GzipSwift
+    - LibXMTP (= 0.4.4-beta2)
     - web3.swift
-    - XMTPRust (= 0.3.7-beta0)
-  - XMTPReactNative (1.24.5):
+  - XMTPReactNative (1.32.4):
     - ExpoModulesCore
     - MessagePacker
     - secp256k1.swift
-    - XMTP (= 0.7.7-alpha0)
+    - XMTP (= 0.10.3)
   - XMTPRust (0.3.7-beta0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -588,7 +587,6 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
-  - react-native-flipper (from `../node_modules/react-native-flipper`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -607,6 +605,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "XMTPReactNative (from `../node_modules/@xmtp/react-native-sdk/ios`)"
+  - XMTPRust (= 0.3.7-beta0)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -626,6 +625,7 @@ SPEC REPOS:
     - GenericJSON
     - GzipSwift
     - libevent
+    - LibXMTP
     - Logging
     - MessagePacker
     - OpenSSL-Universal
@@ -694,8 +694,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
-  react-native-flipper:
-    :path: "../node_modules/react-native-flipper"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -739,7 +737,7 @@ SPEC CHECKSUMS:
   BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
   boost: 7dcd2de282d72e344012f7d6564d024930a6a440
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
-  Connect-Swift: d38eedc1907d440314f8d26d5a038a00cbb0f6f1
+  Connect-Swift: 1de2ef4a548c59ecaeb9120812dfe0d6e07a0d47
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   EXApplication: 042aa2e3f05258a16962ea1a9914bf288db9c9a1
   EXConstants: ce5bbea779da8031ac818c36bea41b10e14d04e1
@@ -764,6 +762,7 @@ SPEC CHECKSUMS:
   GzipSwift: 893f3e48e597a1a4f62fafcb6514220fcf8287fa
   hermes-engine: 9b9bb14184a11b8ceb4131b09abf634880f0f46d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  LibXMTP: 0c073613451e3850bfcaaab5438b481fe887cd97
   Logging: 9ef4ecb546ad3169398d5a723bc9bea1c46bef26
   MessagePacker: ab2fe250e86ea7aedd1a9ee47a37083edd41fd02
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
@@ -782,7 +781,6 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 5a169b1dd1abad06bed40ab7e1aca883c657d865
   React-jsinspector: 54205b269da20c51417e0fc02c4cde9f29a4bf1a
   React-logger: f42d2f2bc4cbb5d19d7c0ce84b8741b1e54e88c8
-  react-native-flipper: 6e4e344a0104a34a4e189a9ef2b3b5634b516dc8
   React-NativeModulesApple: 9f72feb8a04020b32417f768a7e1e40eec91fef4
   React-perflogger: cb433f318c6667060fc1f62e26eb58d6eb30a627
   React-RCTActionSheet: 0af3f8ac067e8a1dde902810b7ad169d0a0ec31e
@@ -802,14 +800,14 @@ SPEC CHECKSUMS:
   ReactCommon: 180205f326d59f52e12fa724f5278fcf8fb6afc3
   secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
-  SwiftProtobuf: b02b5075dcf60c9f5f403000b3b0c202a11b6ae1
+  SwiftProtobuf: 407a385e97fd206c4fbe880cc84123989167e0d1
   web3.swift: 2263d1e12e121b2c42ffb63a5a7beb1acaf33959
-  XMTP: b2488aa96eced55fd41a5aece1334be6b5ab622d
-  XMTPReactNative: e049721b45c768e1e41955aa37aaa6a22dbe919b
+  XMTP: bf00ef58d4fbcc8ab740145a6303591adf3fb355
+  XMTPReactNative: f83c939ee083f57decc7ac0f7db4e4b7e34b72d8
   XMTPRust: 8848a2ba761b2c961d666632f2ad27d1082faa93
   Yoga: eddf2bbe4a896454c248a8f23b4355891eb720a6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 914d6f97cda0965d2c649732c984eb98106256fa
+PODFILE CHECKSUM: 5f5b738af41f2f16e45ac97530fea1d85cbd7792
 
 COCOAPODS: 1.15.2

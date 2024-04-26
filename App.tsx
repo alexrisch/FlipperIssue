@@ -5,6 +5,7 @@
  * @format
  */
 
+import {Client} from '@xmtp/react-native-sdk';
 import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -80,6 +81,22 @@ function App(): JSX.Element {
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
+      });
+
+    Client.createRandom({})
+      .then(client => {
+        console.log('Client created:', client);
+        client.conversations
+          .list()
+          .then(conversations => {
+            console.log('Conversations:', conversations);
+          })
+          .catch(error => {
+            console.error('There was a problem with the client list:', error);
+          });
+      })
+      .catch(error => {
+        console.error('There was a problem with the client creation:', error);
       });
   }, []);
 
